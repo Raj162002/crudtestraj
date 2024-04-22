@@ -1,9 +1,12 @@
 package com.rajeevan.app.rest.Controller;
 
+import com.rajeevan.app.rest.Models.User;
 import com.rajeevan.app.rest.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class ApiControllers {
@@ -14,7 +17,8 @@ public class ApiControllers {
     public String getPage(){
         return "Welcome";
     }
-    public void  getUsers(){
-
+    @GetMapping(value="/users")
+    public List<User> getUsers(){
+        return userRepo.findAll();
     }
 }
