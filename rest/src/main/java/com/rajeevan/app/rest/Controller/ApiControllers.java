@@ -4,6 +4,7 @@ import com.rajeevan.app.rest.Models.User;
 import com.rajeevan.app.rest.Repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -20,5 +21,10 @@ public class ApiControllers {
     @GetMapping(value="/users")
     public List<User> getUsers(){
         return userRepo.findAll();
+    }
+    @PostMapping(value="/save")
+    public String saveUser(User user){
+        userRepo.save(user);
+        return "Saved ....";
     }
 }
